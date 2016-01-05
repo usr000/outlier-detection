@@ -15,6 +15,11 @@ Example of input message:
 
 ## How to try
 
+0. Make sure that docker is available on the command line and all the environment variables are set. On Mac/Win may need to run: 
+```sh
+eval "$(docker-machine env $(docker-machine active))"
+```
+
 1. Run ./rebuildAllImages.sh to rebuild all docker images. Note, that for the first run it may take quite some time, as both Maven and Docker will need to download dependencies.
 2. Run ./startAll.sh to start all needed environment. docker-compose will create and link required containers.  
 3. After some short period messages should start flowing through the system, and will be visible in the log.
