@@ -12,6 +12,7 @@ Example of input message:
 2. mvn 3.3+
 3. docker 1.9.1 & docker-compose 1.5.2, in case of Mac or Win environment also docker-machine 0.5.4
 4. free ports as exposed by docker-compose: 9092, 2181, 27017, 8081
+5. Servers run in UTC timezone and time format assumes UTC.
 
 ## How to try
 
