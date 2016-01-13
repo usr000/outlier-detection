@@ -35,16 +35,16 @@ class Producer(threading.Thread):
 
               time.sleep(1)
             except LeaderNotAvailableError as e:
-              print e
+              logging.exception('LeaderNotAvailableError')
               time.sleep(10)
             except KafkaUnavailableError as e:
-              print e
+              logging.exception('KafkaUnavailableError')
               time.sleep(30)
             except KafkaError as e:
-              print e
+              logging.exception('KafkaError')
               time.sleep(60) 
             except Exception as e:
-              print e
+              logging.exception('Exception')
               time.sleep(60) 
 
 class Consumer(threading.Thread):
