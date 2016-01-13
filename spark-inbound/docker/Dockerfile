@@ -6,7 +6,7 @@ RUN curl -O http://www.eu.apache.org/dist/spark/spark-1.5.2/spark-1.5.2-bin-hado
 	tar zxvf spark-1.5.2-bin-hadoop2.6.tgz && \
 	rm spark-1.5.2-bin-hadoop2.6.tgz
 
-COPY target/spark-inbound-0.0.1-SNAPSHOT-allinone.jar  /spark/spark-inbound.jar
+COPY spark-inbound/target/spark-inbound-0.0.1-SNAPSHOT-allinone.jar  /spark/spark-inbound.jar
 
 RUN bash -c 'touch /spark/spark-inbound.jar'
 	
