@@ -43,7 +43,9 @@ class Producer(threading.Thread):
             except KafkaError as e:
               print e
               time.sleep(60) 
-
+            except Exception as e:
+              print e
+              time.sleep(60) 
 
 class Consumer(threading.Thread):
     daemon = True
