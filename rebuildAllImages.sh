@@ -6,6 +6,16 @@ function mvn-there() {
   (cd $DIR; mvn "$@")     
 } 
 
+source dockerUtils.sh
+
+ensure-docker-up && \
+
+delete-container-and-image outlier-detection/spark-inbound && \
+delete-container-and-image outlier-detection/outlier-web && \
+delete-container-and-image outlier-detection/mongo-custom && \
+delete-container-and-image outlier-detection/python-producer && \
+delete-container-and-image outlier-detection/kafka-initializer && \
+ 
 mvn-there ./spark-inbound clean compile package && \
 mvn-there ./outlier-web clean compile package && \
 

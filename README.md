@@ -13,6 +13,7 @@ Example of input message:
 3. docker 1.9.1 & docker-compose 1.5.2, in case of Mac or Win environment also docker-machine 0.5.4
 4. free ports as exposed by docker-compose: 9092, 2181, 27017, 8081
 5. Servers run in UTC timezone and time format assumes UTC.
+6. If using virtual machine for docker, make sure to allocate > 2 processor (needed for Spark), tested with 8. 
 
 ## How to try
 
@@ -25,6 +26,7 @@ eval "$(docker-machine env $(docker-machine active))"
 2. Run ./startAll.sh to start all needed environment. docker-compose will create and link required containers.  
 3. After some short period messages should start flowing through the system, and will be visible in the log.
 4. To access REST-ful API, please see details below.
+5. When finished, press Control+C.
 
 ## Moving parts
 
@@ -127,3 +129,14 @@ docker-machine ip $(docker-machine active)
 ```
 
 Similarly MongoDB can be accessed at this IP and port 27017. 
+
+## Known Issues
+
+1. In case some container fails to stop, simply restart the virtual machine, e.g:
+```sh
+docker-machine restart <docker-vm-name>
+```
+To validate all containers stopped, the below command must return empty list:
+```sh
+docker ps
+```

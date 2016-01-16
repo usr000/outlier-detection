@@ -7,15 +7,15 @@ from kafka.client import KafkaClient
 from kafka.consumer import SimpleConsumer
 from kafka.producer import SimpleProducer
 
-from kafka.common import LeaderNotAvailableError, KafkaUnavailableError, KafkaError
+from kafka.common import LeaderNotAvailableError, KafkaUnavailableError, KafkaError, ConnectionError
 
 from random import randint, Random
 from datetime import datetime, timedelta, tzinfo
 import json
 
-class Producer(threading.Thread):
+class Producer:
     #daemon = True
-    daemon = False
+    #daemon = False
 
     def run(self):
         #client = KafkaClient("localhost:9092")
@@ -40,6 +40,9 @@ class Producer(threading.Thread):
             except KafkaUnavailableError as e:
               logging.exception('KafkaUnavailableError')
               time.sleep(30)
+            except ConnectionError as e:
+              logging.exception('ConnectionError')
+              time.sleep(60)    
             except KafkaError as e:
               logging.exception('KafkaError')
               time.sleep(60) 
@@ -102,16 +105,15 @@ class SelfGeneratedMessage:
 
 
 def main():
-    threads = [
-        Producer()
-#,
-#        Consumer()
-    ]
+   time.sleep(30)    
+   while True:
+      try:
+       Producer().run()
+      except:
+       logging.exception('Exception in main')
+       time.sleep(10)
 
-    for t in threads:
-        t.start()
-
-    time.sleep(5)
+    
 
 if __name__ == "__main__":
     logging.basicConfig(
