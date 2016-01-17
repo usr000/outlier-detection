@@ -1,4 +1,4 @@
-package otlier.detection.web;
+package outlier.detection.web;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -10,7 +10,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import outlier.detection.dto.OutputMessage;
 
 
-@RepositoryRestResource(collectionResourceRel = "output", path = "outliers")
+@RepositoryRestResource(collectionResourceRel = "outliers", path = "outliers")
 public interface OutlierRepository extends MongoRepository<OutputMessage, String> {
 	
 	@Query(value= "{publisher: ?0}")

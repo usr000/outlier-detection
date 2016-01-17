@@ -1,4 +1,4 @@
-package otlier.detection.web;
+package outlier.detection.web;
 
 import java.util.List;
 
